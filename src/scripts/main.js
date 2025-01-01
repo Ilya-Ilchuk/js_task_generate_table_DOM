@@ -357,4 +357,25 @@ const people = [
 // eslint-disable-next-line no-console
 console.log(people); // you can remove it
 
-// write your code here
+const table = document.querySelector('table');
+
+for (const person of people) {
+  const tr = document.createElement('tr');
+
+  table.appendChild(tr);
+
+  for (let i = 0; i < 6; i++) {
+    const td = document.createElement('td');
+
+    tr.appendChild(td);
+  }
+
+  const cells = tr.querySelectorAll('td');
+
+  cells[0].textContent = person.name;
+  cells[1].textContent = person.sex === 'm' ? 'Male' : 'Female';
+  cells[2].textContent = person.born;
+  cells[3].textContent = person.died;
+  cells[4].textContent = `${person.died - person.born}`;
+  cells[5].textContent = `${Math.ceil(person.died / 100)}`;
+}
